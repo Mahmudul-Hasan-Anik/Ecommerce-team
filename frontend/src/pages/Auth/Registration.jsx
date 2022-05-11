@@ -84,7 +84,7 @@ const Registration = () => {
             </Form>
           </Col>
           <Col className='auth_Part_Two' lg='6'>
-            <h2>Sign In</h2>
+            <h2>Register Account</h2>
             <small>Login to manage orders</small>
             <Link to='/login'>
               <Button className='mt-5' variant='success' size='lg'>Login </Button>
