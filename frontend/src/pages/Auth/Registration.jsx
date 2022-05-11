@@ -80,11 +80,11 @@ const Registration = () => {
               <Form.Label>Confrom password*</Form.Label>
               <Form.Control type="password" placeholder='Enter password'  className='mb-2' onChange={(e)=>setConfrom(e.target.value)} value={confrom}/>
 
-              <Button className='mt-3' variant='success' size='lg' onClick={handleSubmit}>Sign In</Button>
+              <Button className='mt-3' variant='success' size='lg' onClick={handleSubmit}>Register Account</Button>
             </Form>
           </Col>
           <Col className='auth_Part_Two' lg='6'>
-            <h2>Register Account</h2>
+            <h2>Sign In</h2>
             <small>Login to manage orders</small>
             <Link to='/login'>
               <Button className='mt-5' variant='success' size='lg'>Login </Button>
