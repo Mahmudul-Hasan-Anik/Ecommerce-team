@@ -10,7 +10,7 @@ productRoutes.get('/', (req,res)=>{
 })
 
 productRoutes.get('/some/:id', (req,res)=>{
-    Product.find({_id: req.params.id}, (err,docs)=>{
+    Product.findOne({_id: req.params.id}, (err,docs)=>{
         if(docs){
             res.send(docs)
         }else{
