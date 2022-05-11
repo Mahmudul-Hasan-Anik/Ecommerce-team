@@ -12,6 +12,7 @@ const productData = [
         totalSale: 55,
         coupon: true,
         discountAmount: 10,
+        price: 35
     },
     {
         name: 'Blue Footware',
@@ -24,6 +25,7 @@ const productData = [
         stock: 73,
         BrandName: 'PUMA',
         totalSale: 121,
+        price: 45
     },
     {
         name: 'Hand Bag',
@@ -38,6 +40,7 @@ const productData = [
         totalSale: 25,
         coupon: true,
         discountAmount: 15,
+        price: 56
     },
     {
         name: 'Watch',
@@ -50,6 +53,7 @@ const productData = [
         stock: 88,
         BrandName: 'Rolex',
         totalSale: 35,
+        price: 105
     }
 ] 
 

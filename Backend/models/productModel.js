@@ -49,6 +49,10 @@ const ProductSchema = new Schema({
     },
     discountAmount:{
         type: Number
+    },
+    price:{
+        type: Number,
+        required:true
     }
 
 },
