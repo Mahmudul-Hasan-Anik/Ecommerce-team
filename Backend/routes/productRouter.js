@@ -15,4 +15,11 @@ productRoutes.get('/:id', (req,res)=>{
     })
 })
 
+productRoutes.get('/:slug', (req,res)=>{
+    Product.findOne({slug: req.params.slug}, (err,docs)=>{
+        res.send(docs)
+    })
+})
+
 module.exports = productRoutes
+
