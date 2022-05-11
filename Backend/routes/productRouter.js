@@ -9,17 +9,24 @@ productRoutes.get('/', (req,res)=>{
     })
 })
 
-productRoutes.get('/:id', (req,res)=>{
-    Product.find({id: req.params._id}, (err,docs)=>{
-        res.send(docs)
+productRoutes.get('/some/:id', (req,res)=>{
+    Product.find({_id: req.params.id}, (err,docs)=>{
+        if(docs){
+            res.send(docs)
+        }else{
+            res.status(401).json({err})
+        }
     })
 })
 
 productRoutes.get('/:slug', (req,res)=>{
-    Product.findOne({slug: req.params.slug}, (err,docs)=>{
+  Product.findOne({slug: req.params.slug}, (err,docs)=>{
+    if(docs){
         res.send(docs)
-    })
+    }else{
+        res.status(401).json({err})
+    }
+  })
 })
 
 module.exports = productRoutes
-

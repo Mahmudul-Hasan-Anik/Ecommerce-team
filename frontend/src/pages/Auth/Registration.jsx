@@ -15,51 +15,56 @@ const Registration = () => {
 
     let isValid = true
 
-
-    if(!name){
-      isValid = false
-      toast.error('Enter your name')
-      return
-    }else if(typeof name !== 'undefined'){
-      if(!name.match(/^[a-zA-Z]+$/)){
-        isValid = false;
-        toast.error('You can only use letters for Name');
+  
+    if(!name.length || !email.length || !password.length || !confrom.length){
+      toast.error('Please fill all input box')
+    }else{
+      if(!name){
+        isValid = false
+        toast.error('Enter your name')
+        return
+      }else if(typeof name !== 'undefined'){
+        if(!name.match(/^[a-zA-Z]+$/)){
+          isValid = false;
+          toast.error('You can only use letters for Name');
+        }
       }
-    }
-
-    if(!email){
-      isValid = false
-      toast.error('Enter your email address')
-      return
-    }else if(typeof email !== 'undefined'){
-      if (!email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
-        isValid = false;
-        toast.error('Please entered a valid email address');
+  
+      if(!email){
+        isValid = false
+        toast.error('Enter your email address')
+        return
+      }else if(typeof email !== 'undefined'){
+        if (!email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+          isValid = false;
+          toast.error('Please entered a valid email address');
+        }
+      } 
+  
+      if(!password){
+        isValid = false
+        toast.error('Enter a Password')
+        return
+      }else if(typeof password !== 'undefined'){
+        if(!password.match(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/)){
+          isValid = false;
+          toast.error('Minimum eight characters, at least one letter, one number and one special character');
+        }
       }
-    } 
-
-    if(!password){
-      isValid = false
-      toast.error('Enter a Password')
-      return
-    }else if(typeof password !== 'undefined'){
-      if(!password.match(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/)){
-        isValid = false;
-        toast.error('Minimum eight characters, at least one letter, one number and one special character');
+      
+      if(!confrom){
+        isValid = false
+        toast.error('Retype your password')
+      }else if(password !== confrom){
+        toast.error('Password not Matched')
       }
-    }
-    if(!confrom){
-      isValid = false
-      toast.error('Retype your password')
-    }else if(password !== confrom){
-      toast.error('Password not Matched')
-    }
-    else{
-      toast.success('Registration Successful')
-      setName('')
-      setEmail('')
-      setPassword('')
-      setConfrom('')
+      else{
+        toast.success('Registration Successful')
+        setName('')
+        setEmail('')
+        setPassword('')
+        setConfrom('')
+      }
     }
   }
 

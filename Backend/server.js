@@ -1,14 +1,19 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
+ 
 
 const app = express()
 require('dotenv').config()
+app.use(cors())
 
 const Product = require('./models/productModel');
 const productRoutes = require('./routes/productRouter');
 const seedRoutes = require('./routes/seedRouter');
 const userRoutes = require('./routes/userRouter');
 
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 
 app.use('/product', productRoutes)
 app.use('/api/seed', seedRoutes)
