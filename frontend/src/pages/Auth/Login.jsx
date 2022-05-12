@@ -2,13 +2,14 @@ import React,{ useState } from 'react'
 import { Container,Row,Col,Form,Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify';
+import axios from 'axios'
 
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
 
-  const handleSubmit = (e)=>{
+  const handleSubmit = async(e)=>{
     e.preventDefault() 
 
     let isValid = true
@@ -31,10 +32,26 @@ const Login = () => {
         toast.error('Minimum eight characters, at least one letter, one number and one special character');
       }
     }else{
-      toast.success('Registration Successful')
       setEmail('')
       setPassword('')
     }
+    
+    try{
+      const {data} = await axios.post('/api/auth/login',{
+          email,
+          password,
+
+          // {
+          //   headers: authoraization: `Bearer ${userInfo.token}` 
+          // }
+      })
+
+       localStorage.setItem('userInfo', JSON.stringify(data)) 
+       toast.success('success')
+
+      }catch(e){
+          toast.error('Invalid Email or Password')
+      }
   }
 
   return (
@@ -51,14 +68,14 @@ const Login = () => {
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" placeholder='Enter password'  className='mb-2' onChange={(e)=>setPassword(e.target.value)}/>
 
-              <Button className='mt-3' variant='success' size='lg' onClick={handleSubmit}>Sign In</Button>
+              <Button className='mt-3' variant='success' onClick={handleSubmit}>Sign In</Button>
             </Form>
           </Col>
           <Col className='auth_Part_Two' lg='6'>
             <h2>Create Account</h2>
             <small>Create account to manage orders</small>
             <Link to='/registration'>
-              <Button className='mt-5' variant='success' size='lg'>Create Account</Button>
+              <Button className='mt-5' variant='success' >Create Account</Button>
             </Link>
           </Col>
         </Row>

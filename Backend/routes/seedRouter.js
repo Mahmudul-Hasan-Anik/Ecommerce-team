@@ -1,8 +1,8 @@
 const express = require('express')
-const productData = require('../Data/itemData')
-const userData = require('../Data/user')
-const Product = require('../models/productModel')
-const User = require('../models/userModel')
+const productData = require('../Data/itemData.js')
+const userData = require('../Data/user.js')
+const Product = require('../models/productModel.js')
+const User = require('../models/userModel.js')
 
 const seedRoutes = express.Router()
 

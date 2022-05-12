@@ -1,21 +1,23 @@
 import React,{ useState } from 'react'
 import { Container,Row,Col,Form,Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
+import axios from 'axios'
 
 const Registration = () => {
+   const navigate = useNavigate()
+
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confrom, setConfrom] = useState('')
 
 
-  const handleSubmit = (e)=>{
+  const handleSubmit = async(e)=>{
     e.preventDefault() 
 
     let isValid = true
 
-  
     if(!name.length || !email.length || !password.length || !confrom.length){
       toast.error('Please fill all input box')
     }else{
@@ -59,13 +61,26 @@ const Registration = () => {
         toast.error('Password not Matched')
       }
       else{
-        toast.success('Registration Successful')
         setName('')
         setEmail('')
         setPassword('')
         setConfrom('')
       }
     }
+
+    try{
+      const {data} = await axios.post('/api/auth/registration',{
+          name,
+          email,
+          password   
+      })
+
+      navigate('/login', {msg:'Please Login For Containue...'})
+
+     }catch(e){
+      toast.error('Registration Failed')
+     }
+
   }
 
   return (
@@ -85,14 +100,14 @@ const Registration = () => {
               <Form.Label>Confrom password*</Form.Label>
               <Form.Control type="password" placeholder='Enter password'  className='mb-2' onChange={(e)=>setConfrom(e.target.value)} value={confrom}/>
 
-              <Button className='mt-3' variant='success' size='lg' onClick={handleSubmit}>Register Account</Button>
+              <Button className='mt-3' variant='success'  onClick={handleSubmit}>Register Account</Button>
             </Form>
           </Col>
           <Col className='auth_Part_Two' lg='6'>
             <h2>Sign In</h2>
             <small>Login to manage orders</small>
             <Link to='/login'>
-              <Button className='mt-5' variant='success' size='lg'>Login </Button>
+              <Button className='mt-5' variant='success' >Login </Button>
             </Link>
           </Col>
         </Row>
