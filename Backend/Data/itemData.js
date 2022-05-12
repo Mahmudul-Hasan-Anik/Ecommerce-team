@@ -54,7 +54,59 @@ const productData = [
         BrandName: 'Rolex',
         totalSale: 35,
         price: 105
-    }
+    },
+    {
+        name: 'prime Music',
+        image: '/image/product/prime_music.png',
+        slug: 'music',
+        discription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, recusandae',
+        catagory: 'music',
+        rating: 4.5,
+        NumberOfReview: 76,
+        stock: 132,
+        BrandName: 'Apple',
+        totalSale: 43,
+        price: 66
+    },
+    {
+        name: 'Digital Watch',
+        image: '/image/product/digitalWatch.png',
+        slug: 'digitalWatch',
+        discription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, recusandae',
+        catagory: 'watch',
+        rating: 3.5,
+        NumberOfReview: 33,
+        stock: 99,
+        BrandName: 'Samsung',
+        totalSale: 43,
+        price: 20
+    },
+    {
+        name: 'Coffee Mog',
+        image: '/image/product/cup.png',
+        slug: 'cup',
+        discription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, recusandae',
+        catagory: 'Cup',
+        rating: 4.0,
+        NumberOfReview: 66,
+        stock: 202,
+        BrandName: 'RFL',
+        totalSale: 109,
+        price: 5
+    },
+    {
+        name: 'Trolly',
+        image: '/image/product/trolly.png',
+        slug: 'trolly',
+        discription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, recusandae',
+        catagory: 'Bag',
+        rating: 5,
+        NumberOfReview: 44,
+        stock: 76,
+        BrandName: 'Yellow',
+        totalSale: 130,
+        price: 55
+    },
 ] 
 
 module.exports = productData
