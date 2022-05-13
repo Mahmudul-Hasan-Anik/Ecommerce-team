@@ -34,6 +34,7 @@ const Login = () => {
     }else{
       setEmail('')
       setPassword('')
+      
     }
     
     try{
@@ -52,6 +53,7 @@ const Login = () => {
       }catch(e){
           toast.error('Invalid Email or Password')
       }
+      
   }
 
   return (

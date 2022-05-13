@@ -16,71 +16,43 @@ const Registration = () => {
   const handleSubmit = async(e)=>{
     e.preventDefault() 
 
-    let isValid = true
-
-    if(!name.length || !email.length || !password.length || !confrom.length){
+      let isValid = true
+  
+     if(!name.length || !email.length || !password.length || !confrom.length){
       toast.error('Please fill all input box')
-    }else{
-      if(!name){
-        isValid = false
-        toast.error('Enter your name')
-        return
-      }else if(typeof name !== 'undefined'){
+     }else{
+
+    
         if(!name.match(/^[a-zA-Z]+$/)){
           isValid = false;
           toast.error('You can only use letters for Name');
         }
-      }
-  
-      if(!email){
-        isValid = false
-        toast.error('Enter your email address')
-        return
-      }else if(typeof email !== 'undefined'){
-        if (!email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
-          isValid = false;
-          toast.error('Please entered a valid email address');
+        else if (!email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+            isValid = false;
+            toast.error('Please entered a valid email address');
         }
-      } 
-  
-      if(!password){
-        isValid = false
-        toast.error('Enter a Password')
-        return
-      }else if(typeof password !== 'undefined'){
-        if(!password.match(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/)){
-          isValid = false;
-          toast.error('Minimum eight characters, at least one letter, one number and one special character');
-        }
-      }
-      
-      if(!confrom){
-        isValid = false
-        toast.error('Retype your password')
-      }else if(password !== confrom){
-        toast.error('Password not Matched')
-      }
-      else{
-        setName('')
-        setEmail('')
-        setPassword('')
-        setConfrom('')
-      }
-    }
-
-    try{
-      const {data} = await axios.post('/api/auth/registration',{
-          name,
-          email,
-          password   
-      })
-
-      navigate('/login', {msg:'Please Login For Containue...'})
-
-     }catch(e){
-      toast.error('Registration Failed')
+        else if(!password.match(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/)){
+            isValid = false;
+            toast.error('Minimum eight characters, at least one letter, one number and one special character');
+          }
+       else if(password !== confrom){
+            toast.error('Password not Matched')
+       }else{
+            await axios.post('/api/auth/registration',{
+              name,
+              email,
+              password   
+            }).then(()=>{
+              setName('')
+              setEmail('')
+              setPassword('')
+              setConfrom('')
+              navigate('/login')
+            }).catch((err)=>{
+              toast.error('Registration Failed')
+            })
+       }
      }
-
   }
 
   return (

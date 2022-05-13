@@ -37,7 +37,7 @@ const ProductDetails = () => {
     };
     ProductsLoad();
   }, []);
-  console.log(state);
+
 
   let hanldeAddToCart = (product) => {
     let existingItem = state.cart.cartItem.find((item) => item._id == product._id);
