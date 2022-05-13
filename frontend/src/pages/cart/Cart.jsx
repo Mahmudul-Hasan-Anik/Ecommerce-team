@@ -1,10 +1,17 @@
 import React, { useContext } from "react";
-import { Button, Col, Container, ListGroup, Row } from "react-bootstrap";
+import { Button, Col, Container, ListGroup, Row,Card } from "react-bootstrap";
 import { Store } from "../../Store";
 
 const Cart = () => {
   const { state, dispatch } = useContext(Store);
-  console.log(state);
+
+  const {cart} = state
+  const product = state ? state.cart.cartItem : ''
+  const ProductSubTotal = product.reduce((acc,curr)=> acc + curr.price * curr.quantity , 0)
+  const delivaryCharge = ProductSubTotal < 500? 20 : 0
+  const totalItems = cart.cartItem.reduce((acc,curr)=> acc + curr.quantity, 0)
+ 
+ 
   let updateCart = (item, quantity) => {
     dispatch({ type: "ADD-TO-CART", payload: { ...item, quantity } });
   };
@@ -64,13 +71,58 @@ const Cart = () => {
                 <ListGroup.Item className="w-100">
                   {" "}
                   <Button onClick={() => handleDelete(item)} variant="danger">
-                    Delele
+                    Delete
                   </Button>{" "}
                 </ListGroup.Item>
               </ListGroup>
             ))}
           </Col>
-          <Col lg={4}></Col>
+          <Col lg={4}>
+              <div className="card p-3">
+              <div style={{marginTop:'15px',marginLeft:'30px'}}>
+              <Row style={{background:'#49a4ce',color:'white',margin:'10px 0px'}}>
+                <Col>
+                  <h5>Total Items:</h5>
+                </Col>
+                <Col style={{textAlign:"center"}}>
+                  <h5>{totalItems}</h5>
+                </Col>
+              </Row>
+              
+              <Row>
+                <Col>
+                  <h5>Sub Total</h5>
+                </Col>
+                <Col style={{textAlign:"center"}}>
+                  <h5>${ProductSubTotal}</h5>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <h5>Delivery Fee</h5>
+                </Col>
+                <Col style={{textAlign:"center"}}>
+                <h5>${delivaryCharge}</h5>
+                </Col>
+              </Row>
+              
+            </div>
+            <hr style={{backgroundColor: '#B1D182'}}/>
+            <div style={{marginTop:'25px',marginLeft:'30px'}}>
+              <Row>
+                <Col>
+                  <h5>Total</h5>
+                </Col>
+                <Col style={{textAlign:"center"}}>
+                  <h5>${ProductSubTotal + delivaryCharge}</h5>
+                </Col>
+              </Row>
+            </div>
+            <div style={{textAlign:'center'}}>
+              <button className='chack_out_button'>CheckOut</button>
+            </div>
+              </div>
+          </Col>
         </Row>
       </Container>
     </>

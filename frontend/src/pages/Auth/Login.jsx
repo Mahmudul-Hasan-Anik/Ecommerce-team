@@ -68,14 +68,14 @@ const Login = () => {
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" placeholder='Enter password'  className='mb-2' onChange={(e)=>setPassword(e.target.value)}/>
 
-              <Button className='mt-3' variant='success' onClick={handleSubmit}>Sign In</Button>
+              <Button className='mt-3' variant='success' onClick={handleSubmit} size='lg'>Sign In</Button>
             </Form>
           </Col>
           <Col className='auth_Part_Two' lg='6'>
             <h2>Create Account</h2>
             <small>Create account to manage orders</small>
             <Link to='/registration'>
-              <Button className='mt-5' variant='success' >Create Account</Button>
+              <Button className='mt-5' variant='success' size='lg'>Create Account</Button>
             </Link>
           </Col>
         </Row>

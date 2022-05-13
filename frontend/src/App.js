@@ -1,5 +1,5 @@
 import {Login,Registration,Home,Cart,ProductShow,ProductDetails} from './pages/page'
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Container, Nav, Navbar,Button } from "react-bootstrap";
 import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -16,6 +16,9 @@ function App() {
               </Link>
               <Link className="nav-link" to="/products">
                 Products
+              </Link>
+              <Link className="nav-link" to="/login">
+                <Button variant='secondary'>Sign In</Button>
               </Link>
             </Nav>
           </Container>
