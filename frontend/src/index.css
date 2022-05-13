@@ -1,3 +1,37 @@
+/* _____Tanvir */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+*,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.cardItem {
+  transition: all linear 0.3s;
+}
+
+.cardItem:hover {
+  box-shadow: 2px 0px 8px 0px rgba(0, 0, 0, 0.75);
+}
+
+/* _______ */
 
 .main{
   background-color:'gray' !important;
@@ -53,7 +87,7 @@
   width: 50% !important; 
   height: 350px;
   margin: 50px 0px 30px 0px;
-  padding: 0px 50px;
+  padding: 0px 100px;
 }
 .auth_Part_Two h2{
   letter-spacing: 3px;
@@ -96,3 +130,5 @@
 	margin: 5px 0;
 	width: 100%;
 }
+
+
